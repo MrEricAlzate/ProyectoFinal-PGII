@@ -4,46 +4,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
-  ================================================
-  CLASE USUARIO - Entidad principal del proyecto
-  ================================================
-  Esta clase representa al "Usuario final" de la plataforma.
-  Cumple exactamente con los requerimientos del PDF:
-  - RF-001   Registrarse e iniciar sesión
-  - RF-002   Gestionar perfil (nombre, correo, teléfono)
-  - RF-020   Registrarse, iniciar sesión y modificar datos
-  - RF-021   Gestionar métodos de pago simulados
-  - RF-022   Consultar compras asociadas
-   Esta clase SOLO se encarga de representar y gestionar los datos de un usuario.
+ * Clase Usuario
+ *
+ * Esta clase representa a cada persona que usa la plataforma.
+ * Es la que se registra, inicia sesión y compra entradas.
  */
 public class Usuario {
 
-    // ================================================
-    // ATRIBUTOS
-    // ================================================
-    private String idUsuario;           // Identificador único (ej: "USR-001")
-    private String nombreCompleto;      // Nombre y apellido del usuario
-    private String correoElectronico;   // Correo para login y notificaciones
-    private String numeroTelefono;      // Teléfono para contacto
+    // Atributos que pide el PDF
+    private String idUsuario;
+    private String nombreCompleto;
+    private String correoElectronico;
+    private String numeroTelefono;
 
-    // Métodos de pago simulados
-    // Ejemplos: "Tarjeta Visa ****1234", "Nequi", "PayPal", etc.
+    // Métodos de pago simulados (RF-021)
     private List<String> metodosDePago;
 
-    // ================================================
-    // CONSTRUCTORES
-    // ================================================
-
-    /**
-     * Constructor vacío (obligatorio para JavaFX y futuras mejoras)
-     */
+    // Constructor vacío
     public Usuario() {
-        this.metodosDePago = new ArrayList<>();   // Inicializamos la lista vacía
+        this.metodosDePago = new ArrayList<>();
     }
 
-    /**
-     * Constructor completo - Se usa cuando creamos un usuario nuevo
-     */
+    // Constructor con los datos principales
     public Usuario(String idUsuario, String nombreCompleto,
                    String correoElectronico, String numeroTelefono) {
         this.idUsuario = idUsuario;
@@ -53,10 +35,7 @@ public class Usuario {
         this.metodosDePago = new ArrayList<>();
     }
 
-    // ================================================
-    // GETTERS Y SETTERS (muy importantes para JavaFX)
-    // ================================================
-
+    // Getters y Setters (los necesito para las pantallas de JavaFX)
     public String getIdUsuario() { return idUsuario; }
     public void setIdUsuario(String idUsuario) { this.idUsuario = idUsuario; }
 
@@ -71,39 +50,17 @@ public class Usuario {
 
     public List<String> getMetodosDePago() { return metodosDePago; }
 
-    // ================================================
-    // MÉTODOS DE NEGOCIO (según los RF del PDF)
-    // ================================================
-
-    /**
-     * RF-021 - Agregar un método de pago simulado
-     */
+    // Métodos importantes
     public void agregarMetodoDePago(String metodo) {
         this.metodosDePago.add(metodo);
-        System.out.println("Método de pago agregado: " + metodo);
     }
 
-    /**
-     * RF-022 - Registrar una compra al historial del usuario
-     * (Este método lo conectaremos más adelante con la clase Compra)
-     */
     public void registrarCompra(Compra compra) {
-        // Por ahora solo mostramos un mensaje (luego lo mejoraremos)
-        System.out.println("✅ Compra registrada para el usuario: " + nombreCompleto);
+        System.out.println("Compra registrada para: " + nombreCompleto);
     }
 
-    /**
-     * Método toString() para poder imprimir fácilmente el usuario
-     * Muy útil para pruebas y para mostrar en tablas de JavaFX
-     */
     @Override
     public String toString() {
-        return "Usuario{" +
-                "idUsuario='" + idUsuario + '\'' +
-                ", nombre='" + nombreCompleto + '\'' +
-                ", correo='" + correoElectronico + '\'' +
-                ", teléfono='" + numeroTelefono + '\'' +
-                ", métodos de pago=" + metodosDePago.size() +
-                '}';
+        return "Usuario: " + nombreCompleto + " (" + correoElectronico + ")";
     }
 }
