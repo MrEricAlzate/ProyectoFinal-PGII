@@ -4,7 +4,7 @@ Proyecto Final — Programación II (PGII) | Universidad del Quindío
 ## Integrantes del grupo
 
 - Eric Santiago Correa Alzate
-- [Nombre completo compañero]
+- Eduardo Rodriguez
 
 ## Descripción del proyecto
 
